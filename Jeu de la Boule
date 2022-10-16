@@ -1,0 +1,46 @@
+from random import *
+
+progLaunch = True
+
+wallet = 45
+print("Vous placez vos jetons sur une des cases")
+print("marquées de 1 à 9. si la boule s'arrête sur")
+print("la case sur laquel vous avez pariez, vous gagner")
+print("7 fois votre mise. Dans le cas")
+print("contraire vous perdez la mise. Vous avez un")
+print("découvert autorisé de 300€.")
+
+while progLaunch:
+    print("Vous avez " + str(wallet) + "€")
+    print("Faite vos jeux !")
+    note1 = int(input("Vous placer votre jeton sur la case "))
+    if note1 < 1 or note1 > 9:
+        print("veuillez placer votre jeton sur une case qui existe")
+    else:
+        bet = int(input("Combien souhaitez vous pariez ? "))
+        print("La boule est lancé !")
+        n = randint(1, 9)
+        print(n)
+        if n == note1:
+            result = bet*7
+            wallet += result
+            print("Vous avez " + str(wallet) + "€")
+            if wallet > 3000:
+                print("Vous êtes à la porte")
+                print("GOOD END")
+                break
+            elif wallet < -300:
+                print("Vous êtes fauché")
+                print("BAD END")
+                break
+        else:
+            wallet -= bet
+            print("Vous avez " + str(wallet) + "€")
+            if wallet > 3000:
+                print("Vous êtes raccompagné à la porte")
+                print("GOOD END")
+                break
+            elif wallet < -300:
+                print("Vous êtes fauché")
+                print("BAD END")
+                break
